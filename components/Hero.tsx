@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
          <h1 className="font-serif font-bold text-navy-900 mb-0 leading-tight tracking-tight flex flex-col items-center justify-center gap-y-3 md:gap-y-4">
            
            <span 
-             className="whitespace-nowrap text-4xl sm:text-7xl md:text-8xl lg:text-9xl pb-2 tracking-tighter block relative z-10"
+             className="whitespace-nowrap text-5xl sm:text-8xl md:text-9xl lg:text-[10rem] pb-2 tracking-tighter block relative z-10"
              style={{
                fontFamily: '"Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif',
                color: '#ffffff',
