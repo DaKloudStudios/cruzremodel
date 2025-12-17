@@ -196,7 +196,7 @@ const ComparisonSlider: React.FC<ComparisonProps> = ({
   return (
     <div 
       ref={containerRef}
-      className="relative w-full h-[400px] md:h-[600px] overflow-hidden rounded-2xl cursor-col-resize select-none shadow-2xl border-4 border-white group"
+      className="relative w-full h-[350px] md:h-[600px] overflow-hidden rounded-2xl cursor-col-resize select-none shadow-2xl border-4 border-white group"
       onMouseDown={handleMouseDown}
       onTouchStart={handleMouseDown}
     >
@@ -240,8 +240,8 @@ const ComparisonSlider: React.FC<ComparisonProps> = ({
         className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize z-20 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-110 active:scale-95 text-navy-900">
-           <ChevronsLeftRight className="w-6 h-6" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center shadow-lg transform transition-transform hover:scale-110 active:scale-95 text-navy-900">
+           <ChevronsLeftRight className="w-5 h-5 md:w-6 md:h-6" />
         </div>
       </div>
     </div>
@@ -250,7 +250,6 @@ const ComparisonSlider: React.FC<ComparisonProps> = ({
 
 export const BeforeAfter: React.FC = () => {
   // DATA: Project Gallery Images with Locations
-  // NOTE: Browser support for .HEIC is limited. A fallback placeholder will trigger if they fail to load.
   const projects = [
     { 
       image: "https://firebasestorage.googleapis.com/v0/b/aivoks-website.firebasestorage.app/o/Chris%2FSlide%20show%2F1.png?alt=media&token=e122c166-50e7-43d8-af97-af714ca13e03", 
@@ -283,7 +282,7 @@ export const BeforeAfter: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-transparent relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-transparent relative overflow-hidden">
       
       {/* Top Gradient to fade from the previous section - White */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-0 pointer-events-none"></div>
@@ -295,15 +294,15 @@ export const BeforeAfter: React.FC = () => {
         <div className="text-center mb-12">
            <span className="text-gold-700 font-bold tracking-widest uppercase text-xs mb-3 block">Real Results</span>
            <h2 className="text-3xl md:text-5xl font-serif font-bold text-navy-900 mb-4">See The Transformation</h2>
-           <p className="text-gray-800 max-w-2xl mx-auto font-medium">
+           <p className="text-gray-800 max-w-2xl mx-auto font-medium text-sm md:text-base">
              Drag the slider to reveal how we turn outdated spaces into award-winning designs.
            </p>
         </div>
 
         <RevealOnScroll>
-          <div className="max-w-5xl mx-auto flex flex-col gap-24">
+          <div className="max-w-5xl mx-auto flex flex-col gap-16 md:gap-24">
              {/* Comparison 1: Bathroom/Kitchen */}
-             <div className="flex flex-col gap-6">
+             <div className="flex flex-col gap-4 md:gap-6">
                 <ComparisonSlider 
                   beforeImage="https://storage.googleapis.com/aivoks_website_almacenamiento/cruz%20remodel/antes.png" 
                   afterImage="https://storage.googleapis.com/aivoks_website_almacenamiento/cruz%20remodel/despues.png" 
@@ -311,13 +310,13 @@ export const BeforeAfter: React.FC = () => {
                   afterLabel="After"
                 />
                 <div className="text-center">
-                  <h3 className="text-2xl font-serif text-gold-700 font-bold">Modern Luxury Bathroom</h3>
-                  <p className="text-gray-800 font-medium">Witness the dramatic difference detailed craftsmanship makes.</p>
+                  <h3 className="text-xl md:text-2xl font-serif text-gold-700 font-bold">Modern Luxury Bathroom</h3>
+                  <p className="text-gray-800 font-medium text-sm md:text-base">Witness the dramatic difference detailed craftsmanship makes.</p>
                 </div>
              </div>
 
              {/* Comparison 2: Living Room */}
-             <div className="flex flex-col gap-6">
+             <div className="flex flex-col gap-4 md:gap-6">
                 <ComparisonSlider 
                   beforeImage="https://storage.googleapis.com/aivoks_website_almacenamiento/cruz%20remodel/sala%20vieja.png" 
                   afterImage="https://storage.googleapis.com/aivoks_website_almacenamiento/cruz%20remodel/sala%20nueva.png" 
@@ -325,23 +324,23 @@ export const BeforeAfter: React.FC = () => {
                   afterLabel="After"
                 />
                 <div className="text-center">
-                  <h3 className="text-2xl font-serif text-gold-700 font-bold">Living Room Revitalization</h3>
-                  <p className="text-gray-800 font-medium">Creating open, inviting spaces for family and entertainment.</p>
+                  <h3 className="text-xl md:text-2xl font-serif text-gold-700 font-bold">Living Room Revitalization</h3>
+                  <p className="text-gray-800 font-medium text-sm md:text-base">Creating open, inviting spaces for family and entertainment.</p>
                 </div>
              </div>
           </div>
 
           {/* Featured Project Gallery (Circular Slideshow) */}
-          <div className="mt-32 mb-12">
-             <div className="text-center mb-10">
+          <div className="mt-20 md:mt-32 mb-12">
+             <div className="text-center mb-8 md:mb-10">
                 <div className="w-16 h-1 bg-gold-400 mx-auto mb-6 rounded-full"></div>
                 <span className="text-gold-700 font-bold tracking-widest uppercase text-sm mb-2 block">Our Portfolio</span>
-                <h3 className="text-3xl md:text-4xl font-serif font-bold text-navy-900">Featured Projects Across The Bay</h3>
+                <h3 className="text-2xl md:text-4xl font-serif font-bold text-navy-900">Featured Projects Across The Bay</h3>
                 <p className="text-gray-500 mt-2 text-sm italic">Swipe to explore</p>
              </div>
              
-             {/* Container Height defines the 3D scene size */}
-             <div className="w-full h-[600px] cursor-grab active:cursor-grabbing">
+             {/* Container Height defines the 3D scene size. Reduced for mobile. */}
+             <div className="w-full h-[400px] md:h-[600px] cursor-grab active:cursor-grabbing">
                 <CircularGallery 
                   items={projects} 
                   bend={3} 

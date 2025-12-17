@@ -47,7 +47,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen w-full flex flex-col items-center justify-start md:justify-center bg-white px-4 pt-4 md:pt-24 pb-12 md:pb-20 overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-screen w-full flex flex-col items-center justify-start md:justify-center bg-white px-4 pt-12 md:pt-24 pb-12 md:pb-20 overflow-hidden">
       
       <style>{`
         @keyframes typingReveal {
@@ -68,17 +68,17 @@ export const Hero: React.FC = () => {
       </div>
       
       {/* Main Text Content */}
-      <div className="relative z-10 text-center mb-1 max-w-5xl px-4 animate-fadeIn mt-4 md:mt-0 flex flex-col items-center">
-         <h1 className="font-serif font-bold text-navy-900 mb-0 leading-tight tracking-tight flex flex-col items-center justify-center gap-y-2 md:gap-y-4">
+      <div className="relative z-10 text-center mb-4 max-w-5xl px-2 animate-fadeIn mt-4 md:mt-0 flex flex-col items-center">
+         <h1 className="font-serif font-bold text-navy-900 mb-0 leading-tight tracking-tight flex flex-col items-center justify-center gap-y-3 md:gap-y-4">
            
            <span 
-             className="whitespace-nowrap text-5xl sm:text-7xl md:text-8xl lg:text-9xl pb-2 tracking-tighter block relative z-10"
+             className="whitespace-nowrap text-4xl sm:text-7xl md:text-8xl lg:text-9xl pb-2 tracking-tighter block relative z-10"
              style={{
                fontFamily: '"Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif',
                color: '#ffffff',
-               WebkitTextStroke: '4px black',
+               WebkitTextStroke: '1.5px black', // Reduced stroke for mobile readability
                paintOrder: 'stroke fill',
-               textShadow: '4px 4px 0px rgba(0,0,0,0.15)'
+               textShadow: '3px 3px 0px rgba(0,0,0,0.15)'
              }}
            >
              CruzRemodel
@@ -86,7 +86,7 @@ export const Hero: React.FC = () => {
            
            <RotatingText
               texts={["redefining quality.", "transforming homes.", "building your dream."]}
-              mainClassName="text-2xl sm:text-3xl md:text-5xl lg:text-6xl px-6 sm:px-10 py-3 sm:py-5 bg-white text-navy-950 border-2 border-solid border-gold-400 rounded-full inline-flex overflow-hidden justify-center items-center shadow-xl text-center mt-2 font-bold tracking-wide backdrop-blur-sm hover:scale-105 transition-transform duration-300 relative z-20"
+              mainClassName="text-xl sm:text-3xl md:text-5xl lg:text-6xl px-4 sm:px-10 py-2 sm:py-5 bg-white text-navy-950 border-2 border-solid border-gold-400 rounded-full inline-flex overflow-hidden justify-center items-center shadow-xl text-center mt-1 font-bold tracking-wide backdrop-blur-sm hover:scale-105 transition-transform duration-300 relative z-20"
               staggerFrom="last"
               initial={{ y: "100%", opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -99,11 +99,11 @@ export const Hero: React.FC = () => {
          </h1>
          
          <p 
-           className="text-white text-2xl md:text-4xl max-w-4xl mx-auto font-semibold leading-relaxed px-4 mt-4"
+           className="text-white text-xl md:text-4xl max-w-4xl mx-auto font-semibold leading-relaxed px-2 mt-6"
            aria-label={subtitleText}
            style={{
              textShadow: '0 2px 10px rgba(0,0,0,0.3), 0 0 20px rgba(0,0,0,0.1)',
-             WebkitTextStroke: '1.5px black',
+             WebkitTextStroke: '1px black',
              paintOrder: 'stroke fill'
            }}
          >
@@ -123,9 +123,8 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Centered Video Container with Static Layered Cover */}
-      {/* Reduced margins to bring video closer to text box */}
       <div 
-        className="relative w-full max-w-5xl aspect-video bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group transform transition-all duration-500 hover:scale-[1.005] mt-2"
+        className="relative w-full max-w-5xl aspect-video bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group transform transition-all duration-500 hover:scale-[1.005] mt-4"
       >
         
         {/* === STATIC LAYERED COVER SYSTEM (Visible when NOT playing) === */}
@@ -143,16 +142,21 @@ export const Hero: React.FC = () => {
              </div>
 
              {/* 2. BUTTON LAYER (Z-20) */}
-             {/* Changed: Positioned to middle-lower area using center alignment + top padding to hit 'palms' location */}
-             <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none pt-32 md:pt-48">
+             <div className="absolute inset-0 z-20 pointer-events-none">
+                {/* 
+                  Positioning Logic:
+                  - Top: 63% on mobile, 67% on desktop.
+                  - This ensures the button sits "in" the hands of the foreground image overlay (Z-30).
+                  - Sizing is reduced on mobile to prevent obscuring the fingers.
+                */}
                 <button 
                   onClick={handlePlayButton}
-                  className="pointer-events-auto group relative inline-flex items-center gap-3 md:gap-4 px-6 md:px-8 py-3 md:py-4 bg-white/90 border-2 border-gold-400 hover:bg-white rounded-full transition-all duration-300 backdrop-blur-md hover:scale-105 shadow-2xl max-w-[90%]"
+                  className="pointer-events-auto absolute left-1/2 top-[63%] md:top-[67%] -translate-x-1/2 -translate-y-1/2 group inline-flex items-center gap-2 md:gap-4 px-3 sm:px-5 md:px-8 py-1.5 sm:py-2 md:py-4 bg-white/90 border-2 border-gold-400 hover:bg-white rounded-full transition-all duration-300 backdrop-blur-md hover:scale-105 shadow-2xl max-w-[95%] whitespace-nowrap text-center justify-center"
                 >
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 shrink-0">
-                      <Play className="w-4 h-4 md:w-5 md:h-5 fill-navy-950 text-navy-950 ml-1" />
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 shrink-0">
+                      <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-5 md:h-5 fill-navy-950 text-navy-950 ml-0.5" />
                     </div>
-                    <span className="text-lg md:text-xl font-serif italic text-navy-950 group-hover:text-gold-700 transition-colors font-bold">
+                    <span className="text-[11px] sm:text-sm md:text-xl font-serif italic text-navy-950 group-hover:text-gold-700 transition-colors font-bold leading-tight">
                       Why should you trust us?
                     </span>
                 </button>
@@ -194,32 +198,32 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className="relative z-10 flex flex-row items-center justify-center gap-4 sm:gap-6 mt-5 w-full px-4">
+      <div className="relative z-10 flex flex-wrap justify-center gap-3 sm:gap-6 mt-8 w-full px-2">
         <a 
           href="https://www.instagram.com/cruzremodel.official/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-3 px-5 sm:px-8 py-4 bg-white border-2 border-gold-400 rounded-full text-navy-900 font-bold transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-md hover:shadow-xl group min-w-[140px]"
+          className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-8 py-3 bg-white border-2 border-gold-400 rounded-full text-navy-900 font-bold transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-md hover:shadow-xl group min-w-[140px] max-w-[200px]"
         >
-          <Instagram className="w-6 h-6 group-hover:scale-110 transition-transform text-pink-600 shrink-0" />
-          <span className="text-lg sm:text-xl">INSTAGRAM</span>
+          <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform text-pink-600 shrink-0" />
+          <span className="text-sm sm:text-xl">INSTAGRAM</span>
         </a>
         
         <a 
           href="https://www.cruzremodel.com" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-3 px-5 sm:px-8 py-4 bg-white border-2 border-gold-400 rounded-full text-black font-bold transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-md hover:shadow-xl group min-w-[140px]"
+          className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-8 py-3 bg-white border-2 border-gold-400 rounded-full text-black font-bold transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-md hover:shadow-xl group min-w-[140px] max-w-[200px]"
         >
-          <Globe className="w-6 h-6 group-hover:scale-110 transition-transform text-blue-600 shrink-0" />
-          <span className="text-lg sm:text-xl">WEBSITE</span>
+          <Globe className="w-5 h-5 group-hover:scale-110 transition-transform text-blue-600 shrink-0" />
+          <span className="text-sm sm:text-xl">WEBSITE</span>
         </a>
       </div>
 
       {/* Scroll Indicator */}
       <div className="relative mt-8 md:mt-12 flex flex-col items-center justify-center gap-2 opacity-60 animate-bounce z-20 pointer-events-none">
-        <span className="text-sm md:text-base text-navy-900 tracking-widest uppercase text-center font-bold">Scroll to learn more</span>
-        <ChevronDown className="w-6 h-6 text-navy-900" />
+        <span className="text-xs md:text-base text-navy-900 tracking-widest uppercase text-center font-bold">Scroll to learn more</span>
+        <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-navy-900" />
       </div>
 
     </section>
