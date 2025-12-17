@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Play, Loader2, ChevronDown, Instagram, Globe } from 'lucide-react';
+import { Play, Loader2, ChevronDown, Instagram, Globe, Phone } from 'lucide-react';
 import RotatingText from './RotatingText';
 import Iridescence from './Iridescence';
 
@@ -44,6 +44,26 @@ export const Hero: React.FC = () => {
       setIsPlaying(true);
       videoRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+  };
+
+  const handleSaveContact = () => {
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Christian Cruz
+ORG:Cruz Remodel
+TEL;TYPE=CELL:(669) 251-7670
+URL:https://www.cruzremodel.com
+END:VCARD`;
+
+    const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'Christian_Cruz.vcf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
   };
 
   return (
@@ -208,6 +228,14 @@ export const Hero: React.FC = () => {
           <Instagram className="w-5 h-5 group-hover:scale-110 transition-transform text-pink-600 shrink-0" />
           <span className="text-sm sm:text-xl">INSTAGRAM</span>
         </a>
+
+        <button 
+          onClick={handleSaveContact}
+          className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 sm:px-8 py-3 bg-white border-2 border-gold-400 rounded-full text-navy-900 font-bold transition-all duration-300 hover:bg-gray-50 hover:scale-105 shadow-md hover:shadow-xl group min-w-[140px] max-w-[200px]"
+        >
+          <Phone className="w-5 h-5 group-hover:scale-110 transition-transform text-green-600 shrink-0" />
+          <span className="text-sm sm:text-xl">CONTACT</span>
+        </button>
         
         <a 
           href="https://www.cruzremodel.com" 
