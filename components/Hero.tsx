@@ -143,8 +143,8 @@ export const Hero: React.FC = () => {
              </div>
 
              {/* 2. BUTTON LAYER (Z-20) */}
-             {/* Changed: Positioned to bottom area using items-end and padding to align with hands */}
-             <div className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none pb-[4.5rem] md:pb-[6.5rem]">
+             {/* Changed: Positioned to middle-lower area using center alignment + top padding to hit 'palms' location */}
+             <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none pt-32 md:pt-48">
                 <button 
                   onClick={handlePlayButton}
                   className="pointer-events-auto group relative inline-flex items-center gap-3 md:gap-4 px-6 md:px-8 py-3 md:py-4 bg-white/90 border-2 border-gold-400 hover:bg-white rounded-full transition-all duration-300 backdrop-blur-md hover:scale-105 shadow-2xl max-w-[90%]"
