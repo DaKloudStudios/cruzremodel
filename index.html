@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cruz Remodel - Bay Area's Premier Home Transformation Experts</title>
+    <meta name="description" content="Cruz Remodel: Specialized in high-end kitchen, bathroom, and full home remodeling in the Bay Area, CA.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              navy: {
+                // Redefining 'navy' to black/neutral shades to remove blue tint globally
+                800: '#27272a', // Zinc 800 (Dark Gray)
+                900: '#09090b', // Zinc 950 (Rich Black - for cards)
+                950: '#000000', // Pure Black (For main background)
+              },
+              gold: {
+                100: '#faeec7', // Champagne
+                200: '#fde68a',
+                300: '#eec170', // Metallic Gold
+                400: '#d4af37', // True Gold
+                500: '#b4941f', // Dark Gold
+                600: '#8a7014',
+              },
+              brand: {
+                red: '#aa1919', // Deep luxurious red
+              }
+            },
+            backgroundImage: {
+              'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+            },
+            boxShadow: {
+              'glow': '0 0 20px rgba(212, 175, 55, 0.3)',
+              'card': '0 10px 30px -5px rgba(0, 0, 0, 0.1)',
+            },
+            animation: {
+              'fadeIn': 'fadeIn 0.8s ease-out forwards',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Hide scrollbar for cleaner look in some sections if needed */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      
+      .gold-gradient-text {
+        background: linear-gradient(135deg, #d4af37 0%, #faeec7 50%, #b4941f 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Animated Gradient Text Effect - Continuous Loop */
+      @keyframes gradient-flow {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 200% 50%; }
+      }
+
+      .animate-text-gradient {
+        background-image: linear-gradient(
+          to right,
+          #a1a1aa 0%,   /* Zinc 400 (Base Gray) */
+          #ffffff 15%,  /* Bright White start */
+          #fde68a 30%,  /* Gold 200 */
+          #d4af37 45%,  /* Gold 400 (Core Shine) */
+          #fde68a 60%,  /* Gold 200 */
+          #ffffff 75%,  /* Bright White end */
+          #a1a1aa 100%  /* Zinc 400 (Base Gray to loop seamlessly) */
+        );
+        background-size: 200% auto;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-flow 4s linear infinite; /* Slower, smoother, continuous */
+      }
+
+      /* Rotating Text CSS */
+      .text-rotate {
+        display: flex;
+        flex-wrap: wrap;
+        white-space: pre-wrap;
+        position: relative;
+        justify-content: center; /* ADDED: Center horizontally */
+        align-items: center; /* ADDED: Center vertically */
+      }
+
+      .text-rotate-sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .text-rotate-word {
+        display: inline-flex;
+      }
+
+      .text-rotate-lines {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center; /* Ensure lines are centered */
+      }
+
+      .text-rotate-element {
+        display: inline-block;
+      }
+
+      .text-rotate-space {
+        white-space: pre;
+      }
+
+      /* NEW: Hero Text Letter Design */
+      .hero-text-design {
+        color: #09090b; /* Solid Dark */
+        position: relative;
+        text-shadow: 
+            2px 2px 0px #d4af37, /* Gold Shadow */
+            4px 4px 0px rgba(0,0,0,0.1);
+        font-weight: 800; /* Extra bold */
+        letter-spacing: -0.04em;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1?external=react",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?external=react",
+    "lucide-react": "https://esm.sh/lucide-react@0.560.0?external=react",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?external=react,react-dom",
+    "gsap": "https://esm.sh/gsap@3.12.5",
+    "gsap/ScrollTrigger": "https://esm.sh/gsap@3.12.5/ScrollTrigger",
+    "ogl": "https://esm.sh/ogl@1.0.11",
+    "@google/genai": "https://esm.sh/@google/genai@1.33.0",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
