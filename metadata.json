@@ -1,0 +1,8 @@
+{
+  "name": "Yarder",
+  "description": "A comprehensive landscaping business management dashboard handling leads, clients, estimates, projects, and scheduling.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}

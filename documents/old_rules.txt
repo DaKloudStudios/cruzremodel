@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // --- HELPER FUNCTIONS ---
+
+    // 1. Check if user is logged in
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // 2. Check if the logged-in user's email exists in the 'allowed_users' collection
+    function isAuthorized() {
+      return isAuthenticated() && 
+             exists(/databases/$(database)/documents/allowed_users/$(request.auth.token.email));
+    }
+
+    // 3. Check if the logged-in user has the 'Admin' role
+    // We default to Admin if the role field is missing to prevent lockout during setup
+    function isAdmin() {
+      let userDoc = get(/databases/$(database)/documents/allowed_users/$(request.auth.token.email));
+      return isAuthorized() && 
+             (
+               !('role' in userDoc.data) || 
+               userDoc.data.role == 'Admin'
+             );
+    }
+
+    // --- COLLECTION RULES ---
+
+    // 1. Team Management (Allowed Users)
+    match /allowed_users/{email} {
+      // Allow users to read their own entry (needed for bootstrapping permission checks)
+      allow read: if isAuthenticated() && request.auth.token.email == email;
+      // Admins can read list and write new users
+      allow read, write: if isAdmin();
+    }
+
+    // 2. Business Settings (Shared)
+    match /settings/main {
+      allow read: if isAuthorized();
+      allow write: if isAdmin(); 
+    }
+
+    // 3. LEGACY Settings (For Migration)
+    match /settings/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // 4. Shared Business Data
+    // Staff can read/write business data, but only Admins can manage Team/Settings
+    match /leads/{document=**} { allow read, write: if isAuthorized(); }
+    match /clients/{document=**} { allow read, write: if isAuthorized(); }
+    match /calls/{document=**} { allow read, write: if isAuthorized(); }
+    match /estimates/{document=**} { allow read, write: if isAuthorized(); }
+    match /projects/{document=**} { allow read, write: if isAuthorized(); }
+    match /pricebook/{document=**} { allow read, write: if isAuthorized(); }
+    match /templates/{document=**} { allow read, write: if isAuthorized(); }
+  }
+}
